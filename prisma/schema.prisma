@@ -1,0 +1,19 @@
+datasource db {
+  provider = "sqlite" // ou "postgresql" ou "mysql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id      Int      @id @default(autoincrement())
+  nome    String
+  email   String   @unique
+  celular String
+  cpf     String   @unique
+  senha   String
+    fotoPerfil String? // Novo campo para a URL da foto de perfil
+
+}
